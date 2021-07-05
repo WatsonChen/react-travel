@@ -3,8 +3,24 @@ import logo from "../../asstes/logo.svg";
 import styles from "./Header.module.css";
 import { Layout, Typography, Input, Menu, Dropdown, Button } from "antd";
 import { GlobalOutlined } from "@ant-design/icons";
+import {
+  useLocation,
+  useHistory,
+  useParams,
+  useRouteMatch,
+} from "react-router-dom";
 
 export const Header: React.FC = () => {
+  // console.log("useLocation", useLocation);
+  // console.log("useHistory", useHistory);
+  // console.log("useParams", useParams);
+  // console.log("useRouteMatch", useRouteMatch);
+
+  const history = useHistory();
+  const location = useLocation();
+  const params = useParams();
+  const routeMatch = useRouteMatch();
+
   return (
     <div className={styles["app-header"]}>
       {/* top-header */}
@@ -24,8 +40,8 @@ export const Header: React.FC = () => {
             語言
           </Dropdown.Button>
           <Button.Group className={styles["button-group"]}>
-            <Button>註冊</Button>
-            <Button>登入</Button>
+            <Button onClick={() => history.push("/register")}>註冊</Button>
+            <Button onClick={() => history.push("/signin")}>登入</Button>
           </Button.Group>
         </div>
       </div>
